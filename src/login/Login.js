@@ -5,7 +5,7 @@ import LoginForm from './LoginForm';
 function Login() {
     return (
       <div className="wrapper">
-        <div className='container'>
+        <div className='login-container'>
           <div className="card">
           <div className="card-header">The Bank</div>
           <div className="card-body">

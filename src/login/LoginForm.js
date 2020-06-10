@@ -1,8 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 function LoginForm() {
+    const history = useHistory();
+
     return (
         <Formik 
         initialValues={{username: '', password: ''}} 
@@ -11,7 +15,16 @@ function LoginForm() {
                 .required('User name is required to log in your bank account.'),
             password: Yup.string()
                 .required('Password is required to login in your bank account.')
-        })}>
+        })}
+        onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(true);
+
+            history.push('/bank');
+            
+            setTimeout(() => {
+              setSubmitting(false);
+            }, 400);
+          }}>
             <Form>
                 <div className="form-group">
                     <label htmlFor="username">User name</label>
